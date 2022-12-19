@@ -1,0 +1,205 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "DM Sans", sans-serif;
+}
+
+body {
+  background-color: #d9e5f3;
+  min-height: 100vh;
+  position: relative;
+}
+
+#app {
+  position: relative;
+  z-index: 10;
+}
+
+/* ------------------------------------------------------- */
+
+/* #region classi globali */
+.w-100 {
+  width: 100%;
+}
+
+.aspect-ratio-1 {
+  aspect-ratio: 1;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.top-0 {
+  top: 0;
+}
+
+.right-0 {
+  right: 0;
+}
+
+.bottom-0 {
+  bottom: 0;
+}
+
+.left-0 {
+  left: 0;
+}
+
+.rounded-50 {
+  border-radius: 50%;
+}
+
+.z-1 {
+  z-index: 1;
+}
+
+.z-2 {
+  z-index: 2;
+}
+
+.z-3 {
+  z-index: 3;
+}
+
+.z-4 {
+  z-index: 4;
+}
+
+.t-center {
+  text-align: center;
+}
+
+.upper-case {
+  text-transform: uppercase;
+}
+
+.block {
+  display: block;
+}
+
+.mt-32rem {
+  margin-top: 3.2rem;
+}
+/* #endregion */
+
+/* ------------------------------------------------------- */
+
+/* #region Header */
+header {
+  position: relative;
+  width: 100%;
+  height: 163px;
+  top: -36px;
+  box-shadow: 0px 4px 18px -6px #0057ff;
+  border-radius: 13px;
+  padding: 78.43px 51px 32.3px;
+}
+
+header .icon-edusogno {
+  height: 52.27px;
+  width: 123.14px;
+}
+/* #endregion */
+
+/* ------------------------------------------------------- */
+
+/* #region background */
+.background {
+  inset: 0;
+  z-index: -10;
+}
+
+.background .terrain img:first-of-type {
+  bottom: 6rem;
+}
+
+.background .circle .big {
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 358px;
+}
+
+.background .circle .small {
+  top: 43%;
+  right: 2rem;
+  width: 181px;
+}
+
+.background .rocket {
+  bottom: 3rem;
+  right: 13%;
+}
+/* #endregion */
+
+/* -------------------------------------------------------- */
+
+/* #region Main */
+main {
+  width: 662px;
+  margin: 0 auto;
+  padding-top: 3rem;
+}
+
+main h2 {
+  font-size: 2rem;
+  color: #134077;
+  margin-bottom: 1.3rem;
+}
+
+main > div:first-of-type {
+  border: 1px solid #134077;
+  border-radius: 19px;
+  padding: 2rem;
+}
+
+main form .form-group label {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+main form .form-group input {
+  font-size: 1.2rem;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #2D224C;
+  padding: 0.5rem 0;
+}
+
+main form .form-group input.error {
+  border-bottom: 2px solid red;
+}
+
+main button.SUBMIT{
+  background-color: #0057FF;
+  color: white;
+  border: none;
+  border-radius: 0.9rem;
+  padding: 1.2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+}
+
+main .footer-form,
+main .footer-form a {
+  color: #2D224C;
+}
+/* #endregion */
+
+.INVALID {
+  display: none;
+}
+
+.INVALID.error {
+  color: red;
+  display: block;
+}

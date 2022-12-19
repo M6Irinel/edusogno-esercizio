@@ -1,0 +1,38 @@
+<main>
+    <h2 class="t-center">Crea il tuo account</h2>
+
+    <div class="bg-white">
+        <form id="registrazione" action="./assets/db/Form.php" method="POST">
+            <div class="form-group">
+                <label class="block" for="nome">Inserisci il nome</label>
+                <input class="block w-100" type="text" id="nome" name="nome" placeholder="Mario">
+                <div class="INVALID NOME"></div>
+            </div>
+
+            <div class="form-group mt-32rem">
+                <label class="block" for="cognome">Inserisci il cognome</label>
+                <input class="block w-100" type="text" id="cognome" name="cognome" placeholder="Rossi">
+                <div class="INVALID COGNOME"></div>
+            </div>
+
+            <div class="form-group mt-32rem">
+                <label class="block" for="email">Inserisci l'email</label>
+                <input class="block w-100" type="email" id="email" name="email" placeholder="name@example.com">
+                <div class="INVALID EMAIL"></div>
+            </div>
+
+            <div class="form-group mt-32rem">
+                <label class="block" for="password">Inserisci la password</label>
+                <input class="block w-100" type="password" id="password" name="password" placeholder="Scrivi qui">
+                <div class="INVALID PASSWORD"></div>
+            </div>
+        </form>
+
+        <button class="SUBMIT t-center upper-case block w-100 mt-32rem">REGISTRATI</button>
+
+        <div class="footer-form t-center mt-32rem">
+            Hai già un account?
+            <a class="nav-link" to="/log-in" href="#/log-in">Accedi</a>
+        </div>
+    </div>
+</main>
