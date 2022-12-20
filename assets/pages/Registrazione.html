@@ -1,8 +1,8 @@
 <main>
     <h2 class="t-center">Crea il tuo account</h2>
 
-    <div class="bg-white">
-        <form id="registrazione" action="./assets/db/Form.php" method="POST">
+    <div id="REGISTRAZIONE" class="bg-white">
+        <div id="FORM" action="./assets/db/Registrazione.php">
             <div class="form-group">
                 <label class="block" for="nome">Inserisci il nome</label>
                 <input class="block w-100" type="text" id="nome" name="nome" placeholder="Mario">
@@ -26,13 +26,21 @@
                 <input class="block w-100" type="password" id="password" name="password" placeholder="Scrivi qui">
                 <div class="INVALID PASSWORD"></div>
             </div>
-        </form>
+
+            <div class="error-all">
+                <strong>Attenzione: </strong>questa email esiste già!
+            </div>
+        </div>
 
         <button class="SUBMIT t-center upper-case block w-100 mt-32rem">REGISTRATI</button>
 
         <div class="footer-form t-center mt-32rem">
             Hai già un account?
-            <a class="nav-link" to="/log-in" href="#/log-in">Accedi</a>
+            <a class="NAV-LINK" to="/log-in" href="#/log-in">Accedi</a>
         </div>
+    </div>
+
+    <div class="success">
+        <div>SUCCESS</div>
     </div>
 </main>

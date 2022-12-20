@@ -1,13 +1,14 @@
 // @ts-nocheck
-import { Help } from "./Helpers.js";
+import Help from "./Helpers.js";
+import Router from "./router/Router.js";
 
 export default class Form {
   static BtnSubmit() {
-    const btn = document.querySelector("button.SUBMIT:first-of-type");
+    const btn = document.querySelector("button.SUBMIT");
     if (btn) return btn;
   }
 
-  static ControlFeeback() {
+  static async ControlFeedback() {
     const DOM = document.querySelector.bind(document);
 
     const invalid = {
@@ -24,30 +25,90 @@ export default class Form {
       password: DOM("input[name='password']"),
     };
 
-    const h = Form.Have();
+    const data = Form.Have();
 
-    for (const k in h) {
-      if (invalid[k] && h[k]) {
-        invalid[k].innerHTML = h[k].message;
-        if (!h[k].status) {
-          invalid[k].classList.add("error");
-          input[k].classList.add("error");
+    for (const value in data) {
+      if (invalid[value] && data[value]) {
+        invalid[value].innerHTML = data[value].message;
+        if (!data[value].status) {
+          invalid[value].classList.add("error");
+          input[value].classList.add("error");
         } else {
-          invalid[k].classList.remove("error");
-          input[k].classList.remove("error");
+          invalid[value].classList.remove("error");
+          input[value].classList.remove("error");
         }
       }
     }
 
-    const NotError = document.querySelectorAll( '.error' );
-    if ( !NotError.length ) h.form.submit();
+    const NotError = document.querySelectorAll(".error");
+    if (!NotError.length) {
+      let url = data.form.getAttribute("action");
+      url += "?";
+
+      const data2 = Object.fromEntries(
+        Object.entries(data).filter(([k, v]) => v != null && k != "form")
+      );
+
+      for (const ob in data2) {
+        url += `${ob}=${data2[ob].message}&`;
+      }
+      const url2 = url.slice(0, -1);
+
+      let res;
+      await fetch(url2)
+        .then((r) => r.json())
+        .then((r) => {
+          res = r;
+        });
+      console.log(res);
+
+      Form.setSessionStorage(res);
+    }
+  }
+
+  static setSessionStorage(value) {
+    if (value.action == "log-in" && value.status) {
+      document.querySelector("#LOG-IN").style.display = "none";
+      document.querySelector(".success").style.display = "block";
+
+      if (
+        sessionStorage.logged == "false" &&
+        sessionStorage.getItem("logged") == "false"
+      ) {
+        sessionStorage.removeItem("logged");
+        sessionStorage.setItem("logged", value.status);
+        const nome = `${value.data.nome}-${value.data.cognome}`
+          .replace(" ", "-")
+          .trim()
+          .toLowerCase();
+        sessionStorage.setItem("nome", nome);
+      }
+
+      setTimeout(() => {
+        Router.changePage(`${Help.pathPages}Pagina-personale.html`);
+        window.history.pushState("", "", `#/${sessionStorage.getItem("nome")}`);
+      }, 1000);
+    } else {
+      document.querySelector(".error-all").style.display = "block";
+    }
+
+    if (value.action == "registrazione" && value.status) {
+      document.querySelector("#REGISTRAZIONE").style.display = "none";
+      document.querySelector(".success").style.display = "block";
+
+      setTimeout(() => {
+        Router.changePage(`${Help.pathPages}Log-in.html`);
+      }, 2000);
+    } else {
+      document.querySelector(".error-all").style.display = "block";
+    }
   }
 
   static Have() {
-    const DOM = document.querySelector.bind( document );
-    
+    const DOM = document.querySelector.bind(document);
+
     const res = {
-      form: DOM("form:first-of-type"),
+      form: DOM("#FORM"),
       nome: null,
       cognome: null,
       email: null,
@@ -61,9 +122,8 @@ export default class Form {
       password: DOM("input[name='password']"),
     };
 
-    for (const k in input) {
+    for (const k in input)
       if (input[k]) res[k] = Form.Validate(input[k].value, k);
-    }
 
     return res;
   }
@@ -102,6 +162,7 @@ export default class Form {
               return;
             }
           });
+          res.message = value;
           // ritorna la risposta
           return res;
         }
@@ -144,6 +205,7 @@ export default class Form {
           // il stato e true se tutte due le variabili cono true
           res.status = hasNumbers && hasLetterUpper;
 
+          if (res.status) res.message = value;
           // ritorna la risposta
           return res;
         }
@@ -166,8 +228,8 @@ export default class Form {
           // se ha un numero
           if (!hasNumbers)
             // messaggio di errore
-            res.message = `Il ${ type } non deve contenere numeri`;
-          
+            res.message = `Il ${type} non deve contenere numeri`;
+
           // variabile iniziale come true
           let hasSimbols = true;
           // per ogni numero
@@ -181,6 +243,7 @@ export default class Form {
 
           // stato = true
           res.status = hasNumbers && hasSimbols;
+          res.message = value;
           // ritorna la risposta
           return res;
         }

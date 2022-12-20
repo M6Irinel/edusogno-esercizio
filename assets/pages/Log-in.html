@@ -1,25 +1,34 @@
 <main>
     <h2 class="t-center">Hai già un account?</h2>
-    <div class="bg-white">
-        <form id="log-in" action="./assets/db/Form.php" method="POST">
+
+    <div id="LOG-IN" class="bg-white">
+        <div id="FORM" action="./assets/db/Log-in.php">
             <div class="form-group">
                 <label class="block" for="email">Inserisci l'email</label>
                 <input class="block w-100" type="email" id="email" name="email" placeholder="name@example.com">
                 <div class="INVALID EMAIL"></div>
             </div>
-            
+
             <div class="form-group mt-32rem">
                 <label class="block" for="password block">Inserisci la password</label>
                 <input class="block w-100" type="password" id="password" name="password" placeholder="Scrivi qui">
                 <div class="INVALID PASSWORD"></div>
             </div>
-        </form>
-        
+
+            <div class="error-all">
+                <strong>Attenzione: </strong>l'email o la password non sono validi!
+            </div>
+        </div>
+
         <button class="SUBMIT t-center upper-case block w-100 mt-32rem">ACCEDI</button>
 
         <div class="footer-form t-center mt-32rem">
             Non hai ancora un profilo?
-            <a class="nav-link" to="/registrazione" href="#/registrazione">Registrati</a>
+            <a class="NAV-LINK" to="/registrazione" href="#/registrazione">Registrati</a>
         </div>
+    </div>
+
+    <div class="success">
+        <div>SUCCESS</div>
     </div>
 </main>

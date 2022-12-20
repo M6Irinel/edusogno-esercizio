@@ -1,5 +1,5 @@
 // @ts-nocheck
-class Help {
+export default class Help {
   // prendere id app
   static app = document.querySelector("#app");
 
@@ -18,20 +18,11 @@ class Help {
   // salvare la rotta per le pagine
   static pathPages = "./assets/pages/";
 
-  // prendere tutti le ancore con la classe nav-link
+  // salvare la rotta per il Database
+  static pathDB = "./assets/db/";
+
+  // prendere tutti le ancore con la classe NAV-LINK
   static AllNavLink() {
-    return document.querySelectorAll("a.nav-link");
+    return document.querySelectorAll("a.NAV-LINK");
   }
 }
-export { Help };
-
-// Extra mia
-
-// addEventListener("hashchange", (event) => {
-//   Routes.forEach(({ path, component }) => {
-//     const url = event.newURL.split("#")[1];
-
-//     if (url.includes(path))
-//       Router.fetch(`${Help.pathPages}${component}.html`, "text");
-//   });
-// });
