@@ -203,6 +203,10 @@ main .footer-form a {
 }
 /* #endregion */
 
+/* ----------------------------------------------------- */
+
+/* #region feedback */
+
 .INVALID {
   display: none;
   margin-bottom: -1.37rem;
@@ -238,6 +242,11 @@ main .footer-form a {
   text-align: center;
   margin: 1rem 0 -2.3rem;
 }
+/* #endregion */
+
+/* --------------------------------------------------- */
+
+/* #region CARDS */
 
 #CARDS {
   display: grid;
@@ -272,3 +281,28 @@ main .footer-form a {
   border: none;
   cursor: pointer;
 }
+/* #endregion */
+
+/* ---------------------------------------------------- */
+
+/* #region camp-password */
+
+.camp-password {
+  /* position: relative; */
+  display: flex;
+  align-items: stretch;
+}
+
+.camp-password .eye {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0 1rem;
+  border-bottom: 1px solid #2d224c;
+  order: 1;
+}
+
+.camp-password .eye img {
+  display: block;
+}
+/* #endregion */

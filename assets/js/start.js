@@ -77,13 +77,22 @@ async function startPaginaPersonale() {
     .then((r) => (el = r));
 
   store.eventi.res.data.forEach((r) => {
-    const n = document.createElement( "div" );
-    n.className = 'card bg-white';
+    const n = document.createElement("div");
+    n.className = "card bg-white";
     n.innerHTML = el;
     n.querySelector("h2").innerHTML = r.nome_evento;
     n.querySelector(".data").innerHTML = r.data_evento;
     const e = document.querySelector("#CARDS");
     e.append(n);
+  });
+}
+
+function visibilityPassword() {
+  const $ = document.querySelector.bind(document);
+  $("button.eye").addEventListener("click", () => {
+    const b = $('input[name="password"]');
+    if (b.getAttribute("type") == "password") b.setAttribute("type", "text");
+    else b.setAttribute("type", "password");
   });
 }
 
@@ -95,4 +104,4 @@ function start(functStart = () => {}) {
   functStart();
 }
 
-export { start, startPaginaPersonale };
+export { start, startPaginaPersonale, visibilityPassword };

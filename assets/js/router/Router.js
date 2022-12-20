@@ -2,6 +2,7 @@
 import Routes from "./Routes.js";
 import Help from "../Helpers.js";
 import Form from "../Form.js";
+import { visibilityPassword } from "../start.js";
 
 export default class Router {
   // fetch di una pagina
@@ -17,7 +18,9 @@ export default class Router {
         if (Form.BtnSubmit())
           Form.BtnSubmit().addEventListener("click", () => {
             Form.ControlFeedback();
-          });
+          } );
+        
+        visibilityPassword();
       });
   }
 
