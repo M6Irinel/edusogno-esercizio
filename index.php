@@ -13,11 +13,11 @@
 </head>
 
 <body>
-    <?php include_once __DIR__ . '/assets/components/Header.php' ?>
+    <?php include_once __DIR__ . '/assets/components/php/Header.php' ?>
 
     <div id="app"></div>
 
-    <?php include_once __DIR__ . '/assets/components/Background.php' ?>
+    <?php include_once __DIR__ . '/assets/components/php/Background.php' ?>
 </body>
 
 </html>

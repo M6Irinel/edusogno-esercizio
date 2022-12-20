@@ -5,7 +5,7 @@ include_once __DIR__ . './Query.php';
 
 $res = Valid::getValues(['email', 'password'], [true, false]);
 
-$query = Query::where('utenti', ['email' => $res['email']]);
+$query = Query::where('utenti', false, ['email' => $res['email']]);
 
 $data = [
     "status" => false,

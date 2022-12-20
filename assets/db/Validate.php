@@ -19,16 +19,16 @@ class Valid
     }
 
     // ritorna un array associativo
-    static public function getValues($array = [], $controls = [true, true])
+    static public function getValues($array = [], $controls = [true, true], $method = 'GET')
     {
         if ($controls[0]) {
             $a = [];
 
             foreach ($array as $v)
                 if ($controls[1] && $v == 'password')
-                    $a[$v] = Valid::HashPassword(Valid::set($v));
+                    $a[$v] = Valid::HashPassword(Valid::set($v, $method));
                 else
-                    $a[$v] = Valid::set($v);
+                    $a[$v] = Valid::set($v, $method);
 
             return $a;
         }

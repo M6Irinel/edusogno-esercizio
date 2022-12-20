@@ -10,7 +10,7 @@ $data = [
     'action' => 'registrazione'
 ];
 
-if (!Query::where('utenti', ['email' => $a['email']]))
+if (!Query::where('utenti', false, ['email' => $a['email']]))
     if (Query::insertInto('utenti', $a))
         $data['status'] = true;
 

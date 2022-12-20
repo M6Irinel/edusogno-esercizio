@@ -143,9 +143,13 @@ header .icon-edusogno {
 
 /* #region Main */
 main {
-  max-width: 662px;
+  max-width: 1200px;
   margin: 0 auto;
   padding-top: 3rem;
+}
+
+main.form {
+  max-width: 662px;
 }
 
 main h2 {
@@ -154,10 +158,13 @@ main h2 {
   margin-bottom: 1.3rem;
 }
 
-main > div:first-of-type {
+main div.card {
   border: 1px solid #134077;
   border-radius: 19px;
   padding: 2rem;
+}
+
+main div.card.form {
   margin: 0 0.5rem 0.5rem;
 }
 
@@ -170,7 +177,7 @@ main #FORM .form-group input {
   font-size: 1.2rem;
   border: none;
   outline: none;
-  border-bottom: 1px solid #2D224C;
+  border-bottom: 1px solid #2d224c;
   padding: 0.5rem 0;
 }
 
@@ -178,8 +185,8 @@ main #FORM .form-group input.error {
   border-bottom: 2px solid red;
 }
 
-main button.SUBMIT{
-  background-color: #0057FF;
+main button.SUBMIT {
+  background-color: #0057ff;
   color: white;
   border: none;
   border-radius: 0.9rem;
@@ -192,7 +199,7 @@ main button.SUBMIT{
 
 main .footer-form,
 main .footer-form a {
-  color: #2D224C;
+  color: #2d224c;
 }
 /* #endregion */
 
@@ -211,6 +218,7 @@ main .footer-form a {
   border: 1px solid #134077;
   border-radius: 19px;
   padding: 2rem;
+  background-color: #fff;
 }
 
 .success > div {
@@ -229,4 +237,38 @@ main .footer-form a {
   color: red;
   text-align: center;
   margin: 1rem 0 -2.3rem;
+}
+
+#CARDS {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 0 1rem;
+  gap: 4rem;
+}
+
+#CARDS .card {
+  max-width: 349px;
+  padding: 31px;
+}
+
+#CARDS .card h2 {
+  color: #000;
+  font-size: 2rem;
+  margin: 0 0 0.9rem;
+}
+
+#CARDS .card .data {
+  color: #ccc;
+  font-size: 1.2rem;
+  margin: 0 0 1.2rem;
+}
+
+#CARDS .card button {
+  color: #fff;
+  background-color: #0057ff;
+  font-size: 1.4rem;
+  padding: 1rem;
+  border-radius: 11px;
+  border: none;
+  cursor: pointer;
 }

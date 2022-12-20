@@ -1,6 +1,8 @@
 // @ts-nocheck
 import Help from "./Helpers.js";
 import Router from "./router/Router.js";
+import store from "./store.js";
+import { startPaginaPersonale } from "./start.js";
 
 export default class Form {
   static BtnSubmit() {
@@ -60,13 +62,12 @@ export default class Form {
         .then((r) => {
           res = r;
         });
-      console.log(res);
 
       Form.setSessionStorage(res);
     }
   }
 
-  static setSessionStorage(value) {
+  static async setSessionStorage(value) {
     if (value.action == "log-in" && value.status) {
       document.querySelector("#LOG-IN").style.display = "none";
       document.querySelector(".success").style.display = "block";
@@ -77,16 +78,23 @@ export default class Form {
       ) {
         sessionStorage.removeItem("logged");
         sessionStorage.setItem("logged", value.status);
-        const nome = `${value.data.nome}-${value.data.cognome}`
+        const hashNome = `${value.data.nome}-${value.data.cognome}`
           .replace(" ", "-")
           .trim()
           .toLowerCase();
-        sessionStorage.setItem("nome", nome);
+        sessionStorage.setItem("hash_nome", hashNome);
+        sessionStorage.setItem("email", value.data.email);
       }
 
       setTimeout(() => {
         Router.changePage(`${Help.pathPages}Pagina-personale.html`);
-        window.history.pushState("", "", `#/${sessionStorage.getItem("nome")}`);
+        window.history.pushState(
+          "",
+          "",
+          `#/${sessionStorage.getItem("hash_nome")}`
+        );
+
+        Form.fetchProfile(value.data.email);
       }, 1000);
     } else {
       document.querySelector(".error-all").style.display = "block";
@@ -102,6 +110,15 @@ export default class Form {
     } else {
       document.querySelector(".error-all").style.display = "block";
     }
+  }
+
+  static async fetchProfile(email) {
+    await fetch(`./assets/db/Pagina-personale.php?email=${email}`)
+      .then((r) => r.json())
+      .then((r) => {
+        store.eventi = r;
+      });
+    startPaginaPersonale();
   }
 
   static Have() {
@@ -189,21 +206,22 @@ export default class Form {
             res.message =
               "La password deve contenere almeno una lettera maiuscola";
 
-          // variabile iniziale come false
-          let hasNumbers = false;
-          // per ogni numero
-          Help.NUMBERS.split("").forEach((l) => {
-            // se include un numero come minimo ritorna variabile true
-            if (value.includes(l)) return (hasNumbers = true);
-          });
+          // // variabile iniziale come false
+          // let hasNumbers = false;
+          // // per ogni numero
+          // Help.NUMBERS.split("").forEach((l) => {
+          //   // se include un numero come minimo ritorna variabile true
+          //   if (value.includes(l)) return (hasNumbers = true);
+          // });
 
-          // se non c'è un numero
-          if (!hasNumbers)
-            // messaggio di errore
-            res.message = "La password deve contenere almeno un numero";
+          // // se non c'è un numero
+          // if (!hasNumbers)
+          //   // messaggio di errore
+          //   res.message = "La password deve contenere almeno un numero";
 
           // il stato e true se tutte due le variabili cono true
-          res.status = hasNumbers && hasLetterUpper;
+          // res.status = hasNumbers && hasLetterUpper;
+          res.status = hasLetterUpper;
 
           if (res.status) res.message = value;
           // ritorna la risposta
