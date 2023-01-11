@@ -113,7 +113,7 @@ export default class Form {
   }
 
   static async fetchProfile(email) {
-    await fetch(`./assets/db/Pagina-personale.php?email=${email}`)
+    await fetch(`${Help.pathDB}Pagina-personale.php?email=${email}`)
       .then((r) => r.json())
       .then((r) => {
         store.eventi = r;
@@ -195,7 +195,7 @@ export default class Form {
           // variabile iniziale come false
           let hasLetterUpper = false;
           // per ogni lettera in upper case
-          Help.LETTERS_UPPER.split("").forEach((l) => {
+          Help.LETTERS_UPPER.split( "" ).forEach( ( l ) => {
             // se include una lettera come minimo ritorna variabile true
             if (value.includes(l)) return (hasLetterUpper = true);
           });

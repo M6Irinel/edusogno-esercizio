@@ -1,6 +1,5 @@
 <?php
 include_once __DIR__ . './DB.php';
-include_once __DIR__ . './Helpers.php';
 include_once __DIR__ . './Query.php';
 
 class Valid

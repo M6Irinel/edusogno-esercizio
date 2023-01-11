@@ -18,8 +18,8 @@ export default class Router {
         if (Form.BtnSubmit())
           Form.BtnSubmit().addEventListener("click", () => {
             Form.ControlFeedback();
-          } );
-        
+          });
+
         visibilityPassword();
       });
   }

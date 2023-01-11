@@ -11,7 +11,7 @@ function migrate() {
     // se è stata accettata la confirm
     if (confirm("Vuoi lanciare la migrazione?")) {
       // attiva la migrazione
-      fetch("./assets/db/Migrate.php");
+      fetch(`${Help.pathDB}Migrate.php`);
       // salva il stato della migrazione
       sessionStorage.setItem("migrate", true);
     }
@@ -72,7 +72,7 @@ function changePage() {
 async function startPaginaPersonale() {
   document.querySelector("#nome").innerHTML = store.eventi.res.nome;
   let el;
-  await fetch("./assets/components/html/card.html")
+  await fetch(`${Help.pathComponents}card.html`)
     .then((r) => r.text())
     .then((r) => (el = r));
 
@@ -89,10 +89,22 @@ async function startPaginaPersonale() {
 
 function visibilityPassword() {
   const $ = document.querySelector.bind(document);
-  $("button.eye").addEventListener("click", () => {
-    const b = $('input[name="password"]');
-    if (b.getAttribute("type") == "password") b.setAttribute("type", "text");
-    else b.setAttribute("type", "password");
+  const v = $("button.eye");
+  if (v) {
+    v.addEventListener("click", () => {
+      const b = $('input[name="password"]');
+      if (b.getAttribute("type") == "password") b.setAttribute("type", "text");
+      else b.setAttribute("type", "password");
+    });
+  }
+}
+
+function log_out() {
+  const log_out = document.querySelector("#log-out");
+  log_out.addEventListener("click", () => {
+    sessionStorage.removeItem("hash_nome");
+    sessionStorage.removeItem("email");
+    sessionStorage.logged = false;
   });
 }
 
@@ -104,4 +116,4 @@ function start(functStart = () => {}) {
   functStart();
 }
 
-export { start, startPaginaPersonale, visibilityPassword };
+export { start, startPaginaPersonale, visibilityPassword, log_out };

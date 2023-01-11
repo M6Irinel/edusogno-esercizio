@@ -1,4 +1,5 @@
 // @ts-nocheck
-import { start } from "./start.js";
+import { log_out, start } from "./start.js";
 
 start();
+log_out();

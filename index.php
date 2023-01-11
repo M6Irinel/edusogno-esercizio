@@ -1,23 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- Template START -->
+<?php include_once __DIR__ . '/assets/php/components/Start.php' ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edusogno</title>
-    <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
+<!-- Insert all in this tag div: -->
+<div id="app"></div>
 
-    <link rel="stylesheet" href="./assets/styles/style.css">
-    <script src="./assets/js/script.js" type="module" defer></script>
-</head>
-
-<body>
-    <?php include_once __DIR__ . '/assets/components/php/Header.php' ?>
-
-    <div id="app"></div>
-
-    <?php include_once __DIR__ . '/assets/components/php/Background.php' ?>
-</body>
-
-</html>
+<!-- Template END -->
+<?php include_once __DIR__ . '/assets/php/components/End.php' ?>

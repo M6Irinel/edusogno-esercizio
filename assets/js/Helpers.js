@@ -16,10 +16,13 @@ export default class Help {
   static SIMBOLS = "|'!\"£$%&/()=?^€<>,;:-[]{}°#§*+";
 
   // salvare la rotta per le pagine
-  static pathPages = "./assets/pages/";
+  static pathPages = "./assets/html/pages/";
 
   // salvare la rotta per il Database
-  static pathDB = "./assets/db/";
+  static pathDB = "./assets/php/db/";
+
+  // salvare la rotta per il Database
+  static pathComponents = "./assets/html/components/";
 
   // prendere tutti le ancore con la classe NAV-LINK
   static AllNavLink() {

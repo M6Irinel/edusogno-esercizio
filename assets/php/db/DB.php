@@ -1,17 +1,16 @@
 <?php
 
+require_once __DIR__ . '/../Help/Env.php';
+
+use Help\Env;
+
 class DB
 {
-    const SERVER_NAME = 'localhost';
-    const PORT = '3306';
-    const USER_NAME = 'root';
-    const PASSWORD = 'root';
-    const DB_NAME = 'edusogno_stack';
-
     // Connessione DB
     static public function connect()
     {
-        return new mysqli(DB::SERVER_NAME, DB::USER_NAME, DB::PASSWORD, DB::DB_NAME, DB::PORT);
+        $env = Env::read();
+        return new mysqli($env['HOST'], $env['USER'], $env['PASSWORD'], $env['DATABASE'], $env['PORT']);
     }
 
     // Chiusura DB
